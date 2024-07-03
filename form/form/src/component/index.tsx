@@ -49,7 +49,7 @@ export default function Form() {
 
     return (
         <>
-            <div>
+            <div className="bg-black min-h-screen">
                 {!isAuth && (<Login setIsAuth={setIsAuth} />)}
                 {isAuth && (
                     <>
