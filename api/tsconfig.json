@@ -18,6 +18,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/component/*": ["./src/component/*"],
+      "~/lib/*": ["./src/lib/*"],
+    },
     "jsx": "react-jsx"
   },
   "include": [

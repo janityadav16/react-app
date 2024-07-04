@@ -1,29 +1,55 @@
 import React from "react";
-import OpenAI from "openai";
+// import OpenAI from "openai";
 import Lottie from "lottie-react";
 import animation from "./animation.json";
+import { Input } from "./component/ui/input"
+
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "./component/ui/sheet"
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./component/ui/tabs"
+
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./component/ui/dialog"
+
 
 function App() {
   const [idea, setIdea] = React.useState<string>("")
-  const [apiKey, setAPIKey] = React.useState<string>("")
+  // const [apiKey, setAPIKey] = React.useState<string>("")
   const [images, setImages] = React.useState<string[]>([])
   const [loading, setLoading] = React.useState<boolean>(false)
-  const openai = new OpenAI({
-    apiKey: apiKey,
-    dangerouslyAllowBrowser: true,
-  });
+  // const openai = new OpenAI({
+  //   apiKey: apiKey,
+  //   dangerouslyAllowBrowser: true,
+  // });
+
+
 
   const handleFetch = async () => {
     try {
       setLoading(true)
-      const response = await openai.images.generate({
-        model: "dall-e-3",
-        prompt: idea,
-        n: 1,
-        size: "1024x1024",
-      });
-      console.log(response.data)
-      setImages(response.data.map((data: any) => data.url))
+
+      const response = await fetch(`https://api.github.com/repos/thesaas-company/datasherlock/pulls`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `xxxxx`
+        },
+      })
+      console.log(await response.json())
       setLoading(false)
     } catch {
       setLoading(false)
@@ -36,7 +62,45 @@ function App() {
 
       <div className="text-center w-full">
         <div className="text-center items-center">
-          <input className="m-8 w-full p-4 bg-slate-500 rounded-md max-w-[30vw]  border border-solid border-black border-3 text-center " name="Token" type="text" placeholder="Enter your open AI API Key" onChange={(e) => setAPIKey(e.target.value)} />
+          <Input type="text" placeholder="Github Token" />
+
+          <Sheet>
+            <SheetTrigger>Open</SheetTrigger>
+            <SheetContent>
+              <SheetHeader>
+                <SheetTitle>Are you absolutely sure?</SheetTitle>
+                <SheetDescription>
+                  This action cannot be undone. This will permanently delete your account
+                  and remove your data from our servers.
+                </SheetDescription>
+              </SheetHeader>
+            </SheetContent>
+          </Sheet>
+
+          <Tabs defaultValue="account" className="w-[400px]">
+            <TabsList>
+              <TabsTrigger value="account">Account</TabsTrigger>
+              <TabsTrigger value="password">Password</TabsTrigger>
+            </TabsList>
+            <TabsContent value="account">Make changes to your account here.</TabsContent>
+            <TabsContent value="password">Change your password here.</TabsContent>
+          </Tabs>
+
+
+          <Dialog>
+            <DialogTrigger>Open</DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Are you absolutely sure?</DialogTitle>
+                <DialogDescription>
+                  This action cannot be undone. This will permanently delete your account
+                  and remove your data from our servers.
+                </DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
+
+          {/* <input className="m-8 w-full p-4 bg-slate-500 rounded-md max-w-[30vw]  border border-solid border-black border-3 text-center " name="Token" type="text" placeholder="Enter your open AI API Key" onChange={(e) => setAPIKey(e.target.value)} /> */}
           <input className="m-8 w-full p-4 bg-slate-500 rounded-md max-w-[60vw]  border border-solid border-black border-3 text-center " name="Repo" type="text" placeholder="Enter your idea for image" onChange={(e) => setIdea(e.target.value)} />
         </div>
         <div className="text-center items-center m-20">
