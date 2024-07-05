@@ -26,6 +26,15 @@ import {
 } from "./component/ui/dialog"
 
 
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./component/ui/card"
+
 function App() {
   const [idea, setIdea] = React.useState<string>("")
   // const [apiKey, setAPIKey] = React.useState<string>("")
