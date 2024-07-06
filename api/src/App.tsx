@@ -1,8 +1,10 @@
 import React from "react";
-// import OpenAI from "openai";
+import OpenAI from "openai";
+import fs from "fs";
+import path from "path";
 import Lottie from "lottie-react";
 import animation from "./animation.json";
-import { Input } from "./component/ui/input"
+// import { Input } from "./component/ui/input"
 
 import {
   Sheet,
@@ -44,18 +46,31 @@ function App() {
   //   apiKey: apiKey,
   //   dangerouslyAllowBrowser: true,
   // });
+  const openai = new OpenAI();
 
+  const speechFile = path.resolve("./speech.mp3");
 
+  async function main() {
+    const mp3 = await openai.audio.speech.create({
+      model: "tts-1",
+      voice: "alloy",
+      input: "Today is a wonderful day to build something people love!",
+    });
+    console.log(speechFile);
+    const buffer = Buffer.from(await mp3.arrayBuffer());
+    await fs.promises.writeFile(speechFile, buffer);
+  }
+  main();
 
   const handleFetch = async () => {
     try {
       setLoading(true)
 
-      const response = await fetch(`https://api.github.com/repos/thesaas-company/datasherlock/pulls`, {
+      const response = await fetch(``, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `xxxxx`
+          "Authorization": ``
         },
       })
       console.log(await response.json())
@@ -71,8 +86,7 @@ function App() {
 
       <div className="text-center w-full">
         <div className="text-center items-center">
-          <Input type="text" placeholder="Github Token" />
-
+          {/* 
           <Sheet>
             <SheetTrigger>Open</SheetTrigger>
             <SheetContent>
@@ -108,6 +122,19 @@ function App() {
               </DialogHeader>
             </DialogContent>
           </Dialog>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Card Title</CardTitle>
+              <CardDescription>Card Description</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p>Card Content</p>
+            </CardContent>
+            <CardFooter>
+              <p>Card Footer</p>
+            </CardFooter>
+          </Card> */}
 
           {/* <input className="m-8 w-full p-4 bg-slate-500 rounded-md max-w-[30vw]  border border-solid border-black border-3 text-center " name="Token" type="text" placeholder="Enter your open AI API Key" onChange={(e) => setAPIKey(e.target.value)} /> */}
           <input className="m-8 w-full p-4 bg-slate-500 rounded-md max-w-[60vw]  border border-solid border-black border-3 text-center " name="Repo" type="text" placeholder="Enter your idea for image" onChange={(e) => setIdea(e.target.value)} />
