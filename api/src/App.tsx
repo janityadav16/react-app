@@ -137,7 +137,7 @@ function App() {
           </Card> */}
 
           {/* <input className="m-8 w-full p-4 bg-slate-500 rounded-md max-w-[30vw]  border border-solid border-black border-3 text-center " name="Token" type="text" placeholder="Enter your open AI API Key" onChange={(e) => setAPIKey(e.target.value)} /> */}
-          <input className="m-8 w-full p-4 bg-slate-500 rounded-md max-w-[60vw]  border border-solid border-black border-3 text-center " name="Repo" type="text" placeholder="Enter your idea for image" onChange={(e) => setIdea(e.target.value)} />
+          <input className="m-8 w-full p-4 bg-slate-500 rounded-md max-w-[60vw]  border border-solid border-black border-3 text-center " name="Repo" type="text" placeholder="Enter your imagination" onChange={(e) => setIdea(e.target.value)} />
         </div>
         <div className="text-center items-center m-20">
           <button className="  bg-blue-500 hover:bg-blue-700 text-white font-italic  py-2 px-4 rounded transition  transform  hover:-translate-y-1  motion-reduce:transition-none motion-reduce:hover:transform-none " onClick={() => {
