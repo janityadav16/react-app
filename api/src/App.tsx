@@ -6,14 +6,6 @@ import Lottie from "lottie-react";
 import animation from "./animation.json";
 import { Input } from "./component/ui/input"
 
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "./component/ui/sheet"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./component/ui/tabs"
 
