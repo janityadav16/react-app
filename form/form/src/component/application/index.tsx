@@ -42,7 +42,7 @@ export default function Application({ handleApplicationFormSubmit }: Application
                 <div className="flex flex-col gap-2 ">
                     <h1 className="text-3xl font-bold mb-4">Admission Form</h1>
                     <input className="border border-black px-4 py-2" name="name" type="text" placeholder="Enter your name" onChange={handleChangeName} />
-                    <input className="border border-black px-4 py-2" name="Father name" type="text" placeholder="Enter your Father name" onChange={handleChangeFatherName} />
+                    <input className="border border-black px-4 py-2" name="Father name" type="text" placeholder="Enter your Father Name" onChange={handleChangeFatherName} />
                     <input className="border border-black px-4 py-2" name="age" type="number" placeholder="Enter your age" onChange={handleChangeAge} />
                     <input className="border border-black px-4 py-2" name="Standard" type="number" placeholder="Enter your Standard" onChange={handleChangeStandard} />
                     <input className="border border-black px-4 py-2" name="subject" type="text" placeholder="Enter your subject" onChange={handleChangeSubject} />
