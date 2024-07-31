@@ -40,7 +40,7 @@ export default function Update({ selectedStudent, database, handleUpdateFormSubm
         <>
             <div>
                 <>
-                    <input name="Physics" type="number" placeholder="Enter physics Mark" onChange={(e) => {
+                    <input name="Physics" type="number" placeholder="Enter Physics Mark" onChange={(e) => {
                         const value = parseInt(e.target.value)
                         setPhysics(value)
                     }} />
@@ -55,7 +55,7 @@ export default function Update({ selectedStudent, database, handleUpdateFormSubm
                         }} />
                     )}
                     {(
-                        <input name="Math" type="number" placeholder="Enter Math Mark" onChange={(e) => {
+                        <input name="Math" type="number" placeholder="Enter Maths Mark" onChange={(e) => {
                             const value = parseInt(e.target.value)
                             setMath(value)
                         }} />
