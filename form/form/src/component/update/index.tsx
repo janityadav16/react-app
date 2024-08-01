@@ -55,7 +55,7 @@ export default function Update({ selectedStudent, database, handleUpdateFormSubm
                         }} />
                     )}
                     {(
-                        <input name="Math" type="number" placeholder="Enter Maths Mark" onChange={(e) => {
+                        <input name="Maths" type="nu                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    mber" placeholder="Enter Maths Mark" onChange={(e) => {
                             const value = parseInt(e.target.value)
                             setMath(value)
                         }} />
